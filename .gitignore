@@ -1,0 +1,9 @@
+# Misc
+.DS_Store
+.env
+
+# Dependencies
+node_modules
+
+# TypeScript
+dist/

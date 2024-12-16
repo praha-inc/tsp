@@ -1,0 +1,12 @@
+{
+  "name": "@praha/tsp",
+  "version": "1.0.0",
+  "description": "Create typescript package",
+  "keywords": [
+    "typescript",
+    "package",
+    "library"
+  ],
+  "license": "MIT",
+  "packageManager": "pnpm@9.15.0"
+}
