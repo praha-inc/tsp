@@ -19,6 +19,10 @@
     "lint:code": "eslint .",
     "lint:type": "tsc --noEmit"
   },
+  "dependencies": {
+    "find-up": "^7.0.0",
+    "picocolors": "^1.1.1"
+  },
   "devDependencies": {
     "@praha/eslint-config-common": "4.0.1",
     "@praha/eslint-config-definer": "2.0.1",
@@ -27,7 +31,9 @@
     "@praha/eslint-config-typescript": "3.0.2",
     "@rslib/core": "0.1.4",
     "@tsconfig/strictest": "2.0.5",
-    "eslint": "9.17.0"
+    "@types/node": "22.10.2",
+    "eslint": "9.17.0",
+    "type-fest": "4.30.1"
   },
   "packageManager": "pnpm@9.15.0",
   "publishConfig": {
