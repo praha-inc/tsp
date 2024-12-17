@@ -1,6 +1,8 @@
 import { askPackageName } from '../prompts/ask-package-name';
+import { askProjectDirectory } from '../prompts/ask-project-directory';
 
 export const createProject = async () => {
   const packageName = await askPackageName();
-  console.log(packageName);
+  const projectDirectory = await askProjectDirectory(packageName);
+  console.log(projectDirectory);
 };
