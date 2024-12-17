@@ -8,7 +8,7 @@ const main = async () => {
   if (packageJson) {
     addPackage(packageJson);
   } else {
-    createProject();
+    await createProject();
   }
 };
 
