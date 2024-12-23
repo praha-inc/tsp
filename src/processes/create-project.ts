@@ -3,6 +3,8 @@ import fs from 'node:fs';
 import pc from 'picocolors';
 
 import { clearDirectory } from '../helpers/clear-directory';
+import { copyDirectory } from '../helpers/copy-directory';
+import { getTemplatePath } from '../helpers/get-template-path';
 import { isEmptyDirectory } from '../helpers/is-empty-directory';
 import { isWriteable } from '../helpers/is-writeable';
 import { writeLicenseFile } from '../helpers/write-license-file';
@@ -47,6 +49,7 @@ export const createProject = async () => {
 
   console.log(`Creating a new package in ${pc.green(projectDirectory)}.`);
   writeLicenseFile(license, author, `${projectDirectory}/LICENSE`);
+  copyDirectory(getTemplatePath('projects/base'), projectDirectory);
 
   if (requireMultiPackage) {
     console.log('no implementation');
