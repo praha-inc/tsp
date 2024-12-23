@@ -4,6 +4,7 @@ import pc from 'picocolors';
 
 import { clearDirectory } from '../helpers/clear-directory';
 import { isEmptyDirectory } from '../helpers/is-empty-directory';
+import { isWriteable } from '../helpers/is-writeable';
 import { askLicense } from '../prompts/ask-license';
 import { askPackageName } from '../prompts/ask-package-name';
 import { askPathExistsContinue } from '../prompts/ask-path-exists-continue';
@@ -13,6 +14,11 @@ export const createProject = async () => {
   const packageName = await askPackageName();
 
   const projectDirectory = await askProjectDirectory(packageName);
+  if (!isWriteable(projectDirectory)) {
+    console.log(`${pc.red('✖')} Target directory ${projectDirectory} is not writeable`);
+    return process.exit(1);
+  }
+
   if (fs.existsSync(projectDirectory) && !isEmptyDirectory(projectDirectory)) {
     const choice = await askPathExistsContinue(projectDirectory);
     switch (choice) {
