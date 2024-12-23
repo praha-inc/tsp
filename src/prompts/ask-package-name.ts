@@ -2,6 +2,8 @@
 import prompts from 'prompts';
 import validateNpmPackageName from 'validate-npm-package-name';
 
+import { handleCancelPrompt } from '../helpers/handle-cancel-prompt';
+
 export const askPackageName = async (): Promise<string> => {
   const result = await prompts({
     type: 'text',
@@ -18,6 +20,8 @@ export const askPackageName = async (): Promise<string> => {
       ];
       return `Invalid package name: ${messages[0]}`;
     },
+  }, {
+    onCancel: handleCancelPrompt,
   });
 
   return String(result.packageName);

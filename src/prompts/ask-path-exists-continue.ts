@@ -1,6 +1,8 @@
 // eslint-disable-next-line import-x/no-named-as-default
 import prompts from 'prompts';
 
+import { handleCancelPrompt } from '../helpers/handle-cancel-prompt';
+
 export type AskPathExistsContinueChoice = 'no' | 'yes' | 'ignore';
 
 export const askPathExistsContinue = async (projectDirectory: string): Promise<AskPathExistsContinueChoice> => {
@@ -24,6 +26,8 @@ export const askPathExistsContinue = async (projectDirectory: string): Promise<A
         value: 'ignore',
       },
     ],
+  }, {
+    onCancel: handleCancelPrompt,
   });
 
   return String(result.pathExistsContinue) as AskPathExistsContinueChoice;
