@@ -7,6 +7,14 @@
     "package",
     "library"
   ],
+  "homepage": "https://github.com/praha-inc/tsp/blob/main/README.md",
+  "bugs": {
+    "url": "https://github.com/praha-inc/tsp/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/praha-inc/tsp.git"
+  },
   "license": "MIT",
   "bin": "dist/index.mjs",
   "files": [
