@@ -5,6 +5,7 @@ import pc from 'picocolors';
 import { clearDirectory } from '../helpers/clear-directory';
 import { isEmptyDirectory } from '../helpers/is-empty-directory';
 import { isWriteable } from '../helpers/is-writeable';
+import { writeLicenseFile } from '../helpers/write-license-file';
 import { askAuthor } from '../prompts/ask-author';
 import { askLicense } from '../prompts/ask-license';
 import { askPackageName } from '../prompts/ask-package-name';
@@ -41,10 +42,7 @@ export const createProject = async () => {
 
   const author = await askAuthor();
   const license = await askLicense();
-  console.log({
-    author,
-    packageName,
-    projectDirectory,
-    license,
-  });
+
+  console.log(`Creating a new package in ${pc.green(projectDirectory)}.`);
+  writeLicenseFile(license, author, `${projectDirectory}/LICENSE`);
 };

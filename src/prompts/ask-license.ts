@@ -1,20 +1,22 @@
 // eslint-disable-next-line import-x/no-named-as-default
 import prompts from 'prompts';
 
-import { License } from '../constants/license';
+import { licenses } from '../constants/license';
 import { handleCancelPrompt } from '../helpers/handle-cancel-prompt';
+
+import type { License } from '../constants/license';
 
 export const askLicense = async (): Promise<License> => {
   const result = await prompts({
     type: 'select',
     name: 'license',
     message: 'choose a license:',
-    choices: Object.values(License).map((license) => {
-      return ({ title: license, value: license });
+    choices: licenses.map((license) => {
+      return ({ title: `${license.name} (${license.identifier})`, value: license });
     }),
   }, {
     onCancel: handleCancelPrompt,
   });
 
-  return String(result.license) as License;
+  return result.license as License;
 };
