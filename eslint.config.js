@@ -9,6 +9,12 @@ const config = define([
   javascript,
   typescript,
   style,
+  /** @returns {import('eslint').Linter.Config[]} */
+  () => [{
+    rules: {
+      'unicorn/no-process-exit': 'off',
+    },
+  }],
 ]);
 
 export default config({
