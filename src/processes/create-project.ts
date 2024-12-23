@@ -8,12 +8,14 @@ import { isWriteable } from '../helpers/is-writeable';
 import { writeLicenseFile } from '../helpers/write-license-file';
 import { askAuthor } from '../prompts/ask-author';
 import { askLicense } from '../prompts/ask-license';
+import { askMultiPackage } from '../prompts/ask-multi-package';
 import { askPackageName } from '../prompts/ask-package-name';
 import { askPathExistsContinue } from '../prompts/ask-path-exists-continue';
 import { askProjectDirectory } from '../prompts/ask-project-directory';
 
 export const createProject = async () => {
   const packageName = await askPackageName();
+  const requireMultiPackage = await askMultiPackage();
 
   const projectDirectory = await askProjectDirectory(packageName);
   if (!isWriteable(projectDirectory)) {
@@ -45,4 +47,10 @@ export const createProject = async () => {
 
   console.log(`Creating a new package in ${pc.green(projectDirectory)}.`);
   writeLicenseFile(license, author, `${projectDirectory}/LICENSE`);
+
+  if (requireMultiPackage) {
+    console.log('no implementation');
+  } else {
+    console.log('no implementation');
+  }
 };
