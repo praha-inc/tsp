@@ -1,5 +1,5 @@
 {
-  "name": "@praha/tsp",
+  "name": "@praha/create-tsp",
   "version": "1.0.0",
   "description": "Create typescript package",
   "keywords": [

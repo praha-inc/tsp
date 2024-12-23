@@ -1,1 +1,1 @@
-# @praha/tsp
+# @praha/create-tsp
