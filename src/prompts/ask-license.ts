@@ -2,6 +2,7 @@
 import prompts from 'prompts';
 
 import { License } from '../constants/license';
+import { handleCancelPrompt } from '../helpers/handle-cancel-prompt';
 
 export const askLicense = async (): Promise<License> => {
   const result = await prompts({
@@ -11,6 +12,8 @@ export const askLicense = async (): Promise<License> => {
     choices: Object.values(License).map((license) => {
       return ({ title: license, value: license });
     }),
+  }, {
+    onCancel: handleCancelPrompt,
   });
 
   return String(result.license) as License;
