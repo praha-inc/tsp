@@ -5,6 +5,7 @@ import pc from 'picocolors';
 import { clearDirectory } from '../helpers/clear-directory';
 import { isEmptyDirectory } from '../helpers/is-empty-directory';
 import { isWriteable } from '../helpers/is-writeable';
+import { askAuthor } from '../prompts/ask-author';
 import { askLicense } from '../prompts/ask-license';
 import { askPackageName } from '../prompts/ask-package-name';
 import { askPathExistsContinue } from '../prompts/ask-path-exists-continue';
@@ -38,8 +39,10 @@ export const createProject = async () => {
     fs.mkdirSync(projectDirectory, { recursive: true });
   }
 
+  const author = await askAuthor();
   const license = await askLicense();
   console.log({
+    author,
     packageName,
     projectDirectory,
     license,
