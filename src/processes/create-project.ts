@@ -52,7 +52,7 @@ export const createProject = async () => {
   copyDirectory(getTemplatePath('projects/base'), projectDirectory);
 
   if (requireMultiPackage) {
-    console.log('no implementation');
+    copyDirectory(getTemplatePath('projects/workspace-root'), projectDirectory);
   } else {
     copyDirectory(getTemplatePath('projects/single-package'), projectDirectory);
   }
