@@ -54,6 +54,6 @@ export const createProject = async () => {
   if (requireMultiPackage) {
     console.log('no implementation');
   } else {
-    console.log('no implementation');
+    copyDirectory(getTemplatePath('projects/single-package'), projectDirectory);
   }
 };
