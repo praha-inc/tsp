@@ -44,7 +44,7 @@ export const createProject = async () => {
     fs.mkdirSync(projectDirectory, { recursive: true });
   }
 
-  const author = await askAuthor();
+  const author = await askAuthor(projectDirectory);
   const license = await askLicense();
 
   console.log(`Creating a new package in ${pc.green(projectDirectory)}.`);
