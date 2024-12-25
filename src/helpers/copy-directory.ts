@@ -1,6 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+import { copyFile } from './copy-file';
+
 export const copyDirectory = (source: string, destination: string) => {
   fs.mkdirSync(destination, { recursive: true });
   for (const file of fs.readdirSync(source)) {
@@ -11,7 +13,7 @@ export const copyDirectory = (source: string, destination: string) => {
     if (stat.isDirectory()) {
       copyDirectory(sourceFile, destinationFile);
     } else {
-      fs.copyFileSync(sourceFile, destinationFile);
+      copyFile(sourceFile, destinationFile);
     }
   }
 };

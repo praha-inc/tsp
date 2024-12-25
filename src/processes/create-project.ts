@@ -4,10 +4,10 @@ import pc from 'picocolors';
 
 import { clearDirectory } from '../helpers/clear-directory';
 import { copyDirectory } from '../helpers/copy-directory';
+import { copyFile } from '../helpers/copy-file';
 import { getTemplatePath } from '../helpers/get-template-path';
 import { isEmptyDirectory } from '../helpers/is-empty-directory';
 import { isWriteable } from '../helpers/is-writeable';
-import { writeLicenseFile } from '../helpers/write-license-file';
 import { askAuthor } from '../prompts/ask-author';
 import { askLicense } from '../prompts/ask-license';
 import { askMultiPackage } from '../prompts/ask-multi-package';
@@ -48,8 +48,10 @@ export const createProject = async () => {
   const license = await askLicense();
 
   console.log(`Creating a new package in ${pc.green(projectDirectory)}.`);
-  writeLicenseFile(license, author, `${projectDirectory}/LICENSE`);
   copyDirectory(getTemplatePath('projects/base'), projectDirectory);
+  copyFile(getTemplatePath(license.templatePath), `${projectDirectory}/LICENSE`, (content) => {
+    return content.replace(`{authorName}`, author);
+  });
 
   if (requireMultiPackage) {
     copyDirectory(getTemplatePath('projects/workspace-root'), projectDirectory);
