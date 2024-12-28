@@ -9,6 +9,7 @@ import { getTemplatePath } from '../helpers/get-template-path';
 import { isEmptyDirectory } from '../helpers/is-empty-directory';
 import { isWriteable } from '../helpers/is-writeable';
 import { askAuthor } from '../prompts/ask-author';
+import { askGitHubUrl } from '../prompts/ask-github-url';
 import { askLicense } from '../prompts/ask-license';
 import { askMultiPackage } from '../prompts/ask-multi-package';
 import { askPackageName } from '../prompts/ask-package-name';
@@ -46,6 +47,7 @@ export const createProject = async () => {
 
   const author = await askAuthor(projectDirectory);
   const license = await askLicense();
+  const gitHubUrl = await askGitHubUrl();
 
   console.log(`Creating a new package in ${pc.green(projectDirectory)}.`);
   copyDirectory(getTemplatePath('projects/base'), projectDirectory);
