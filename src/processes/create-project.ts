@@ -5,6 +5,7 @@ import pc from 'picocolors';
 import { clearDirectory } from '../helpers/clear-directory';
 import { copyDirectory } from '../helpers/copy-directory';
 import { copyFile } from '../helpers/copy-file';
+import { getGitOriginUrl } from '../helpers/get-git-origin-url';
 import { getTemplatePath } from '../helpers/get-template-path';
 import { isEmptyDirectory } from '../helpers/is-empty-directory';
 import { isWriteable } from '../helpers/is-writeable';
@@ -47,7 +48,7 @@ export const createProject = async () => {
 
   const author = await askAuthor(projectDirectory);
   const license = await askLicense();
-  const gitHubUrl = await askGitHubUrl();
+  const gitHubUrl = await getGitOriginUrl(projectDirectory) || await askGitHubUrl();
 
   console.log(`Creating a new package in ${pc.green(projectDirectory)}.`);
   copyDirectory(getTemplatePath('projects/base'), projectDirectory);
