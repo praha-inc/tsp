@@ -11,6 +11,7 @@ import { getTemplatePath } from '../helpers/get-template-path';
 import { isEmptyDirectory } from '../helpers/is-empty-directory';
 import { isWriteable } from '../helpers/is-writeable';
 import { askAuthor } from '../prompts/ask-author';
+import { askClearDirectory } from '../prompts/ask-clear-directory';
 import { askGitHubUrl } from '../prompts/ask-github-url';
 import { askLicense } from '../prompts/ask-license';
 import { askMultiPackage } from '../prompts/ask-multi-package';
@@ -39,6 +40,10 @@ export const createProject = async () => {
         return process.exit(1);
       }
       case 'yes': {
+        if (!await askClearDirectory(projectDirectory)) {
+          cancel('Operation cancelled');
+          return process.exit(1);
+        }
         await tasks([{
           title: `Removing existing files in ${pc.green(projectDirectory)}`,
           task: () => clearDirectory(projectDirectory),
