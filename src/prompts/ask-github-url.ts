@@ -1,22 +1,22 @@
-// eslint-disable-next-line import-x/no-named-as-default
-import prompts from 'prompts';
+import { isCancel, text } from '@clack/prompts';
 
 import { handleCancelPrompt } from '../helpers/handle-cancel-prompt';
 
 export const askGitHubUrl = async (): Promise<string> => {
-  const result = await prompts({
-    type: 'text',
-    name: 'gitHubUrl',
-    message: 'GitHub Url:',
+  const result = await text({
+    message: 'GitHub Repository Url',
+    placeholder: 'https://github.com/username/repo',
     validate: (value: string) => {
       if (!/^https:\/\/github\.com\/[^/]+\/[^/]+\/?$/.test(value)) {
         return 'Please enter a valid GitHub Url';
       }
-      return true;
+      return;
     },
-  }, {
-    onCancel: handleCancelPrompt,
   });
 
-  return String(result.gitHubUrl);
+  if (isCancel(result)) {
+    return handleCancelPrompt();
+  }
+
+  return result;
 };

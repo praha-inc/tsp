@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 
+import { cancel, intro, log, outro } from '@clack/prompts';
 import pc from 'picocolors';
 
 import { clearDirectory } from '../helpers/clear-directory';
@@ -19,12 +20,14 @@ import { askPathExistsContinue } from '../prompts/ask-path-exists-continue';
 import { askProjectDirectory } from '../prompts/ask-project-directory';
 
 export const createProject = async () => {
+  intro(pc.bgCyan(` ${pc.black('tsp: Create a new project')} `));
+
   const packageName = await askPackageName();
   const requireMultiPackage = await askMultiPackage();
 
   const projectDirectory = await askProjectDirectory(packageName);
   if (!isWriteable(projectDirectory)) {
-    console.log(`${pc.red('✖')} Target directory ${projectDirectory} is not writeable`);
+    cancel(`Target directory ${projectDirectory} is not writeable.`);
     return process.exit(1);
   }
 
@@ -32,7 +35,7 @@ export const createProject = async () => {
     const choice = await askPathExistsContinue(projectDirectory);
     switch (choice) {
       case 'no': {
-        console.log(`${pc.red('✖')} Operation cancelled`);
+        cancel('Operation cancelled');
         return process.exit(1);
       }
       case 'yes': {
@@ -52,7 +55,7 @@ export const createProject = async () => {
   const license = await askLicense();
   const gitHubUrl = await getGitOriginUrl(projectDirectory) || await askGitHubUrl();
 
-  console.log(`Creating a new package in ${pc.green(projectDirectory)}.`);
+  log.info(`Creating a new package in ${pc.green(projectDirectory)}.`);
   copyDirectory(getTemplatePath('projects/base'), projectDirectory);
   copyFile(getTemplatePath(license.templatePath), `${projectDirectory}/LICENSE`, (content) => {
     return content.replace(`{authorName}`, author);
@@ -63,4 +66,6 @@ export const createProject = async () => {
   } else {
     copyDirectory(getTemplatePath('projects/single-package'), projectDirectory);
   }
+
+  outro(pc.bgGreen(` ${pc.black('Project created successfully')} `));
 };

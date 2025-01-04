@@ -1,17 +1,20 @@
-// eslint-disable-next-line import-x/no-named-as-default
-import prompts from 'prompts';
+import { isCancel, text } from '@clack/prompts';
 
 import { handleCancelPrompt } from '../helpers/handle-cancel-prompt';
 
 export const askPackageDescription = async (): Promise<string> => {
-  const result = await prompts({
-    type: 'text',
-    name: 'description',
-    message: 'package description:',
-    initial: 'My awesome package',
-  }, {
-    onCancel: handleCancelPrompt,
+  const result = await text({
+    message: 'Package description',
+    placeholder: 'My awesome package',
+    validate: (value: string) => {
+      if (value.length <= 0) return 'Description should not be empty';
+      return;
+    },
   });
 
-  return String(result.description);
+  if (isCancel(result)) {
+    return handleCancelPrompt();
+  }
+
+  return result;
 };

@@ -1,6 +1,6 @@
-import pc from 'picocolors';
+import { cancel } from '@clack/prompts';
 
 export const handleCancelPrompt = () => {
-  console.log(`${pc.red('✖')} Operation cancelled`);
+  cancel('Operation cancelled');
   process.exit(1);
 };
