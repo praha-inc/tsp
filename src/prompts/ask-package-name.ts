@@ -1,18 +1,15 @@
-// eslint-disable-next-line import-x/no-named-as-default
-import prompts from 'prompts';
+import { isCancel, text } from '@clack/prompts';
 import validateNpmPackageName from 'validate-npm-package-name';
 
 import { handleCancelPrompt } from '../helpers/handle-cancel-prompt';
 
 export const askPackageName = async (): Promise<string> => {
-  const result = await prompts({
-    type: 'text',
-    name: 'packageName',
-    message: 'package name:',
-    initial: 'my-package',
+  const result = await text({
+    message: 'Package name',
+    placeholder: 'my-package',
     validate: (value: string) => {
       const result = validateNpmPackageName(value);
-      if (result.validForNewPackages) return true;
+      if (result.validForNewPackages) return;
 
       const messages = [
         ...(result.errors || []),
@@ -20,9 +17,11 @@ export const askPackageName = async (): Promise<string> => {
       ];
       return `Invalid package name: ${messages[0]}`;
     },
-  }, {
-    onCancel: handleCancelPrompt,
   });
 
-  return String(result.packageName);
+  if (isCancel(result)) {
+    return handleCancelPrompt();
+  }
+
+  return result;
 };

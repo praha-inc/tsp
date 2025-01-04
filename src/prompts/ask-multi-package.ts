@@ -1,19 +1,19 @@
-// eslint-disable-next-line import-x/no-named-as-default
-import prompts from 'prompts';
+import { isCancel, select } from '@clack/prompts';
 
 import { handleCancelPrompt } from '../helpers/handle-cancel-prompt';
 
 export const askMultiPackage = async (): Promise<boolean> => {
-  const result = await prompts({
-    type: 'toggle',
-    name: 'requireMultiPackage',
+  const result = await select({
     message: 'Do you want a multi-package configuration?',
-    initial: false,
-    active: 'yes',
-    inactive: 'no',
-  }, {
-    onCancel: handleCancelPrompt,
+    options: [
+      { value: false, label: 'No' },
+      { value: true, label: 'Yes' },
+    ],
   });
 
-  return Boolean(result.requireMultiPackage);
+  if (isCancel(result)) {
+    return handleCancelPrompt();
+  }
+
+  return result;
 };

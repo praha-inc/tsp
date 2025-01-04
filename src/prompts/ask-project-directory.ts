@@ -1,20 +1,22 @@
-// eslint-disable-next-line import-x/no-named-as-default
-import prompts from 'prompts';
+import { isCancel, text } from '@clack/prompts';
 
 import { handleCancelPrompt } from '../helpers/handle-cancel-prompt';
 
 export const askProjectDirectory = async (packageName: string): Promise<string> => {
-  const result = await prompts({
-    type: 'text',
-    name: 'projectDirectory',
-    message: 'project directory:',
-    initial: packageName.split('/').at(-1),
+  const result = await text({
+    message: 'Where would you like to create the project?',
+    placeholder: './my-package',
+    initialValue: `./${packageName.split('/').at(-1)}`,
     validate: (value: string) => {
-      return [...value].length <= 255;
+      if (value.length <= 0) return 'Directory name should not be empty';
+      if (255 < value.length) return 'Directory name should be less than 256 characters';
+      return;
     },
-  }, {
-    onCancel: handleCancelPrompt,
   });
 
-  return String(result.projectDirectory);
+  if (isCancel(result)) {
+    return handleCancelPrompt();
+  }
+
+  return result;
 };
