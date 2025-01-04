@@ -6,6 +6,7 @@ import pc from 'picocolors';
 import { clearDirectory } from '../helpers/clear-directory';
 import { copyDirectory } from '../helpers/copy-directory';
 import { copyFile } from '../helpers/copy-file';
+import { findMissingCommands } from '../helpers/find-missing-commands';
 import { getGitOriginUrl } from '../helpers/get-git-origin-url';
 import { getTemplatePath } from '../helpers/get-template-path';
 import { isEmptyDirectory } from '../helpers/is-empty-directory';
@@ -21,7 +22,18 @@ import { askPathExistsContinue } from '../prompts/ask-path-exists-continue';
 import { askProjectDirectory } from '../prompts/ask-project-directory';
 
 export const createProject = async () => {
-  intro(pc.bgCyan(` ${pc.black('tsp: Create a new project')} `));
+  intro(pc.bgCyan(` ${pc.black('tsp: Create a new project.')} `));
+
+  await tasks([{
+    title: 'Checking required tools.',
+    task: async () => {
+      const missingCommands = await findMissingCommands(['git', 'pnpm']);
+      if (0 < missingCommands.length) {
+        cancel(`Please install the following tools: ${missingCommands.join(', ')}`);
+        return process.exit(1);
+      }
+    },
+  }]);
 
   const packageName = await askPackageName();
   const requireMultiPackage = await askMultiPackage();
@@ -36,16 +48,16 @@ export const createProject = async () => {
     const choice = await askPathExistsContinue(projectDirectory);
     switch (choice) {
       case 'no': {
-        cancel('Operation cancelled');
+        cancel('Operation cancelled.');
         return process.exit(1);
       }
       case 'yes': {
         if (!await askClearDirectory(projectDirectory)) {
-          cancel('Operation cancelled');
+          cancel('Operation cancelled.');
           return process.exit(1);
         }
         await tasks([{
-          title: `Removing existing files in ${pc.green(projectDirectory)}`,
+          title: `Removing existing files in ${pc.green(projectDirectory)}.`,
           task: () => clearDirectory(projectDirectory),
         }]);
         break;
@@ -75,5 +87,5 @@ export const createProject = async () => {
     copyDirectory(getTemplatePath('projects/single-package'), projectDirectory);
   }
 
-  outro(pc.bgGreen(` ${pc.black('Project created successfully')} `));
+  outro(pc.bgGreen(` ${pc.black('Project created successfully.')} `));
 };
