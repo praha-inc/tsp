@@ -17,6 +17,7 @@ import { askGitHubUrl } from '../prompts/ask-github-url';
 import { askLicense } from '../prompts/ask-license';
 import { askMultiPackage } from '../prompts/ask-multi-package';
 import { askPackageDescription } from '../prompts/ask-package-description';
+import { askPackageKeywords } from '../prompts/ask-package-keywords';
 import { askPackageName } from '../prompts/ask-package-name';
 import { askPathExistsContinue } from '../prompts/ask-path-exists-continue';
 import { askProjectDirectory } from '../prompts/ask-project-directory';
@@ -72,6 +73,7 @@ export const createProject = async () => {
 
   const author = await askAuthor(projectDirectory);
   const description = await askPackageDescription();
+  const keywords = await askPackageKeywords();
   const license = await askLicense();
   const gitHubUrl = await getGitOriginUrl(projectDirectory) || await askGitHubUrl();
 
