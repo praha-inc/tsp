@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 
-import { cancel, intro, log, outro } from '@clack/prompts';
+import { cancel, intro, log, outro, tasks } from '@clack/prompts';
 import pc from 'picocolors';
 
 import { clearDirectory } from '../helpers/clear-directory';
@@ -39,7 +39,10 @@ export const createProject = async () => {
         return process.exit(1);
       }
       case 'yes': {
-        clearDirectory(projectDirectory);
+        await tasks([{
+          title: `Removing existing files in ${pc.green(projectDirectory)}`,
+          task: () => clearDirectory(projectDirectory),
+        }]);
         break;
       }
       case 'ignore': {
