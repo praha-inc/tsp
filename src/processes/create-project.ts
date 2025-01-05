@@ -7,13 +7,12 @@ import { clearDirectory } from '../helpers/clear-directory';
 import { copyDirectory } from '../helpers/copy-directory';
 import { copyFile } from '../helpers/copy-file';
 import { findMissingCommands } from '../helpers/find-missing-commands';
-import { getGitOriginUrl } from '../helpers/get-git-origin-url';
+import { getGitRepositoryName } from '../helpers/get-git-repository-name';
 import { getTemplatePath } from '../helpers/get-template-path';
 import { isEmptyDirectory } from '../helpers/is-empty-directory';
 import { isWriteable } from '../helpers/is-writeable';
 import { askAuthor } from '../prompts/ask-author';
 import { askClearDirectory } from '../prompts/ask-clear-directory';
-import { askGitHubUrl } from '../prompts/ask-github-url';
 import { askLicense } from '../prompts/ask-license';
 import { askMultiPackage } from '../prompts/ask-multi-package';
 import { askPackageDescription } from '../prompts/ask-package-description';
@@ -21,6 +20,7 @@ import { askPackageKeywords } from '../prompts/ask-package-keywords';
 import { askPackageName } from '../prompts/ask-package-name';
 import { askPathExistsContinue } from '../prompts/ask-path-exists-continue';
 import { askProjectDirectory } from '../prompts/ask-project-directory';
+import { askRepositoryName } from '../prompts/ask-repository-name';
 
 export const createProject = async () => {
   intro(pc.bgCyan(` ${pc.black('tsp: Create a new project.')} `));
@@ -78,7 +78,7 @@ export const createProject = async () => {
   const description = await askPackageDescription();
   const keywords = await askPackageKeywords();
   const license = await askLicense();
-  const gitHubUrl = await getGitOriginUrl(projectDirectory) || await askGitHubUrl();
+  const repositoryName = await getGitRepositoryName(projectDirectory) || await askRepositoryName();
 
   log.info(`Creating a new package in ${pc.green(projectDirectory)}.`);
 

@@ -2,13 +2,13 @@ import { isCancel, text } from '@clack/prompts';
 
 import { handleCancelPrompt } from '../helpers/handle-cancel-prompt';
 
-export const askGitHubUrl = async (): Promise<string> => {
+export const askRepositoryName = async (): Promise<string> => {
   const result = await text({
-    message: 'GitHub Repository Url',
-    placeholder: 'https://github.com/username/repo',
+    message: 'Repository name',
+    placeholder: 'user/repository',
     validate: (value: string) => {
-      if (!/^https:\/\/github\.com\/[^/]+\/[^/]+\/?$/.test(value)) {
-        return 'Please enter a valid GitHub Url';
+      if (!/^[\w-]+\/[\w-]+$/.test(value)) {
+        return 'Please enter a valid repository name';
       }
       return;
     },

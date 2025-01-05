@@ -1,7 +1,7 @@
 import { execa } from 'execa';
 import pc from 'picocolors';
 
-export const getGitOriginUrl = async (directory: string): Promise<string | undefined> => {
+export const getGitRepositoryName = async (directory: string): Promise<string | undefined> => {
   try {
     const result = await execa({ cwd: directory })`git config remote.origin.url`;
 
@@ -11,7 +11,7 @@ export const getGitOriginUrl = async (directory: string): Promise<string | undef
       return process.exit(1);
     }
 
-    return `https://github.com/${match[1]}/${match[2]}`;
+    return `${match[1]}/${match[2]}`;
   } catch {
     return;
   }
