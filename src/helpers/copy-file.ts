@@ -1,10 +1,14 @@
-import fs from 'node:fs';
+import fs from 'node:fs/promises';
 
-export const copyFile = (source: string, destination: string, transform?: (content: string) => string): void => {
+export const copyFile = async (
+  source: string,
+  destination: string,
+  transform?: (content: string) => string,
+): Promise<void> => {
   if (transform) {
-    const content = transform(fs.readFileSync(source, 'utf8'));
-    fs.writeFileSync(destination, content);
+    const content = transform(await fs.readFile(source, 'utf8'));
+    await fs.writeFile(destination, content);
   } else {
-    fs.copyFileSync(source, destination);
+    await fs.copyFile(source, destination);
   }
 };

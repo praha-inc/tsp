@@ -78,16 +78,23 @@ export const createProject = async () => {
   const gitHubUrl = await getGitOriginUrl(projectDirectory) || await askGitHubUrl();
 
   log.info(`Creating a new package in ${pc.green(projectDirectory)}.`);
-  copyDirectory(getTemplatePath('projects/base'), projectDirectory);
-  copyFile(getTemplatePath(license.templatePath), `${projectDirectory}/LICENSE`, (content) => {
-    return content.replace(`{authorName}`, author);
-  });
 
-  if (requireMultiPackage) {
-    copyDirectory(getTemplatePath('projects/workspace-root'), projectDirectory);
-  } else {
-    copyDirectory(getTemplatePath('projects/single-package'), projectDirectory);
-  }
+  await tasks([{
+    title: 'Creating project files.',
+    task: async () => {
+      await copyDirectory(getTemplatePath('projects/base'), projectDirectory);
+      await copyFile(getTemplatePath(license.templatePath), `${projectDirectory}/LICENSE`, (content) => {
+        return content.replace(`{authorName}`, author);
+      });
+
+      // eslint-disable-next-line unicorn/prefer-ternary
+      if (requireMultiPackage) {
+        await copyDirectory(getTemplatePath('projects/workspace-root'), projectDirectory);
+      } else {
+        await copyDirectory(getTemplatePath('projects/single-package'), projectDirectory);
+      }
+    },
+  }]);
 
   outro(pc.bgGreen(` ${pc.black('Project created successfully.')} `));
 };

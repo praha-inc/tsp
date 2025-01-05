@@ -1,19 +1,21 @@
-import fs from 'node:fs';
+import fs from 'node:fs/promises';
 import path from 'node:path';
 
 import { copyFile } from './copy-file';
 
-export const copyDirectory = (source: string, destination: string) => {
-  fs.mkdirSync(destination, { recursive: true });
-  for (const file of fs.readdirSync(source)) {
+export const copyDirectory = async (source: string, destination: string): Promise<void> => {
+  await fs.mkdir(destination, { recursive: true });
+  const files = await fs.readdir(source);
+  await Promise.all(files.map(async (file) => {
     const sourceFile = path.resolve(source, file);
     const destinationFile = path.resolve(destination, file);
 
-    const stat = fs.statSync(sourceFile);
+    const stat = await fs.stat(sourceFile);
+    // eslint-disable-next-line unicorn/prefer-ternary
     if (stat.isDirectory()) {
-      copyDirectory(sourceFile, destinationFile);
+      await copyDirectory(sourceFile, destinationFile);
     } else {
-      copyFile(sourceFile, destinationFile);
+      await copyFile(sourceFile, destinationFile);
     }
-  }
+  }));
 };
