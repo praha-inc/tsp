@@ -59,7 +59,10 @@ export const createProject = async () => {
         }
         await tasks([{
           title: `Removing existing files in ${pc.green(projectDirectory)}.`,
-          task: () => clearDirectory(projectDirectory),
+          task: async () => {
+            await clearDirectory(projectDirectory);
+            return 'Existing files removed.';
+          },
         }]);
         break;
       }
@@ -93,6 +96,8 @@ export const createProject = async () => {
       } else {
         await copyDirectory(getTemplatePath('projects/single-package'), projectDirectory);
       }
+
+      return 'Project files created.';
     },
   }]);
 
