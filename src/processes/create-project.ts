@@ -172,6 +172,17 @@ export const createProject = async () => {
         return 'Installed dependencies.';
       },
     },
+    {
+      title: 'Initializing git repository.',
+      enabled: !fs.existsSync(`${projectDirectory}/.git`),
+      task: async () => {
+        await execa('git', ['init'], { cwd: projectDirectory });
+        await execa('git', ['add', '.'], { cwd: projectDirectory });
+        await execa('git', ['commit', '-m', 'Initial commit'], { cwd: projectDirectory });
+        await execa('git', ['remote', 'add', 'origin', `https://github.com/${repositoryName}.git`], { cwd: projectDirectory });
+        return 'Initialized git repository.';
+      },
+    },
   ]);
 
   outro(pc.bgGreen(` ${pc.black('Project created successfully.')} `));
