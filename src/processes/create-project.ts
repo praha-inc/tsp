@@ -95,8 +95,10 @@ export const createProject = async () => {
       await copyLicense(projectDirectory);
 
       if (requireMultiPackage) {
+        const packageDirectory = `${projectDirectory}/packages/${packageName.split('/').at(-1)}`;
         await copyDirectory(getTemplatePath('projects/workspace-root'), projectDirectory);
-        await copyLicense(`${projectDirectory}/packages/${packageName.split('/').at(-1)}`);
+        await copyDirectory(getTemplatePath('projects/workspace-package'), packageDirectory);
+        await copyLicense(packageDirectory);
       } else {
         await copyDirectory(getTemplatePath('projects/single-package'), projectDirectory);
       }
