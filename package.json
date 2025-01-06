@@ -20,6 +20,7 @@
   "bin": "dist/index.js",
   "files": [
     "dist",
+    "templates",
     "LICENSE",
     "README.md"
   ],
