@@ -112,7 +112,7 @@ export const createProject = async () => {
           await fs.promises.writeFile(`${projectDirectory}/README.md`, `# ${packageName}\n\n${description}\n`);
         }
 
-        return 'Project files created.';
+        return 'The project files were created.';
       },
     },
     {
@@ -165,7 +165,7 @@ export const createProject = async () => {
           });
         }
 
-        return 'package.json file created.';
+        return 'The package.json file was created.';
       },
     },
     {

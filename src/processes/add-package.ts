@@ -1,5 +1,3 @@
-import type { PackageJson } from 'type-fest';
-
-export const addPackage = (packageJson: PackageJson) => {
-  console.log('addPackage', packageJson);
+export const addPackage = (packageJsonPath: string) => {
+  console.log('addPackage', packageJsonPath);
 };
