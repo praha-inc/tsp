@@ -105,8 +105,11 @@ export const createProject = async () => {
           await copyDirectory(getTemplatePath('projects/workspace-root'), projectDirectory);
           await copyDirectory(getTemplatePath('projects/workspace-package'), `${projectDirectory}/${packageDirectory}`);
           await copyLicense(`${projectDirectory}/${packageDirectory}`);
+          await fs.promises.writeFile(`${projectDirectory}/README.md`, `# ${repositoryName.split('/').at(-1)}\n`);
+          await fs.promises.writeFile(`${projectDirectory}/${packageDirectory}/README.md`, `# ${packageName}\n\n${description}\n`);
         } else {
           await copyDirectory(getTemplatePath('projects/single-package'), projectDirectory);
+          await fs.promises.writeFile(`${projectDirectory}/README.md`, `# ${packageName}\n\n${description}\n`);
         }
 
         return 'Project files created.';
