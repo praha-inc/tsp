@@ -1,0 +1,27 @@
+{
+  "name": "",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "lint:code": "turbo lint:code",
+    "lint:type": "turbo lint:type",
+    "version": "changeset",
+    "version:apply": "changeset version",
+    "version:publish": "changeset publish",
+    "version:prepublish": "pkg-pr-new publish --pnpm --compact './packages/*'"
+  },
+  "devDependencies": {
+    "@changesets/changelog-github": "",
+    "@changesets/cli": "",
+    "@praha/eslint-config-common": "",
+    "@praha/eslint-config-definer": "",
+    "@praha/eslint-config-javascript": "",
+    "@praha/eslint-config-style": "",
+    "@praha/eslint-config-typescript": "",
+    "@tsconfig/strictest": "",
+    "eslint": "",
+    "pkg-pr-new": "",
+    "turbo": ""
+  },
+  "packageManager": ""
+}

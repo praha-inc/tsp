@@ -8,6 +8,8 @@ import { copyDirectory } from '../helpers/copy-directory';
 import { copyFile } from '../helpers/copy-file';
 import { findMissingCommands } from '../helpers/find-missing-commands';
 import { getGitRepositoryName } from '../helpers/get-git-repository-name';
+import { getPackageVersion } from '../helpers/get-package-version';
+import { getPackageVersions } from '../helpers/get-package-versions';
 import { getTemplatePath } from '../helpers/get-template-path';
 import { isEmptyDirectory } from '../helpers/is-empty-directory';
 import { isWriteable } from '../helpers/is-writeable';
@@ -21,6 +23,8 @@ import { askPackageName } from '../prompts/ask-package-name';
 import { askPathExistsContinue } from '../prompts/ask-path-exists-continue';
 import { askProjectDirectory } from '../prompts/ask-project-directory';
 import { askRepositoryName } from '../prompts/ask-repository-name';
+
+import type { PackageJson } from 'type-fest';
 
 export const createProject = async () => {
   intro(pc.bgCyan(` ${pc.black('tsp: Create a new project.')} `));
@@ -81,31 +85,86 @@ export const createProject = async () => {
   const repositoryName = await getGitRepositoryName(projectDirectory) || await askRepositoryName();
 
   log.info(`Creating a new package in ${pc.green(projectDirectory)}.`);
+  const packageDirectory = `packages/${packageName.split('/').at(-1)}`;
 
-  const copyLicense = async (directory: string): Promise<void> => {
-    await copyFile(getTemplatePath(license.templatePath), `${directory}/LICENSE`, (content) => {
-      return content.replace(`{authorName}`, author);
-    });
-  };
+  await tasks([
+    {
+      title: 'Creating project files.',
+      task: async () => {
+        const copyLicense = async (directory: string): Promise<void> => {
+          await copyFile(getTemplatePath(license.templatePath), `${directory}/LICENSE`, (content) => {
+            return content.replace(`{authorName}`, author);
+          });
+        };
 
-  await tasks([{
-    title: 'Creating project files.',
-    task: async () => {
-      await copyDirectory(getTemplatePath('projects/base'), projectDirectory);
-      await copyLicense(projectDirectory);
+        await copyDirectory(getTemplatePath('projects/base'), projectDirectory);
+        await copyLicense(projectDirectory);
 
-      if (requireMultiPackage) {
-        const packageDirectory = `${projectDirectory}/packages/${packageName.split('/').at(-1)}`;
-        await copyDirectory(getTemplatePath('projects/workspace-root'), projectDirectory);
-        await copyDirectory(getTemplatePath('projects/workspace-package'), packageDirectory);
-        await copyLicense(packageDirectory);
-      } else {
-        await copyDirectory(getTemplatePath('projects/single-package'), projectDirectory);
-      }
+        if (requireMultiPackage) {
+          await copyDirectory(getTemplatePath('projects/workspace-root'), projectDirectory);
+          await copyDirectory(getTemplatePath('projects/workspace-package'), `${projectDirectory}/${packageDirectory}`);
+          await copyLicense(`${projectDirectory}/${packageDirectory}`);
+        } else {
+          await copyDirectory(getTemplatePath('projects/single-package'), projectDirectory);
+        }
 
-      return 'Project files created.';
+        return 'Project files created.';
+      },
     },
-  }]);
+    {
+      title: 'Creating package.json file.',
+      task: async () => {
+        if (requireMultiPackage) {
+          await copyFile(getTemplatePath('package-json/workspace-root/package.json'), `${projectDirectory}/package.json`, async (content) => {
+            const packageJson = JSON.parse(content) as PackageJson;
+
+            packageJson.name = repositoryName.split('/').at(-1)!;
+            packageJson.devDependencies = await getPackageVersions(packageJson.devDependencies || {});
+            packageJson.packageManager = `pnpm@${await getPackageVersion('pnpm')}`;
+
+            return `${JSON.stringify(packageJson, null, 2)}\n`;
+          });
+
+          await copyFile(getTemplatePath('package-json/workspace-package/package.json'), `${projectDirectory}/${packageDirectory}/package.json`, async (content) => {
+            const packageJson = JSON.parse(content) as PackageJson;
+
+            packageJson.name = packageName;
+            packageJson.description = description;
+            packageJson.keywords = keywords;
+            packageJson.homepage = `https://github.com/${repositoryName}/blob/main/${packageDirectory}/README.md`;
+            packageJson.bugs = { url: `https://github.com/${repositoryName}/issues` };
+            packageJson.repository = { type: 'git', url: `git+https://github.com/${repositoryName}.git`, directory: packageDirectory };
+            packageJson.license = license.identifier;
+            packageJson.author = author;
+
+            packageJson.devDependencies = await getPackageVersions(packageJson.devDependencies || {});
+
+            return `${JSON.stringify(packageJson, null, 2)}\n`;
+          });
+        } else {
+          await copyFile(getTemplatePath('package-json/single-package/package.json'), `${projectDirectory}/package.json`, async (content) => {
+            const packageJson = JSON.parse(content) as PackageJson;
+
+            packageJson.name = packageName;
+            packageJson.description = description;
+            packageJson.keywords = keywords;
+            packageJson.homepage = `https://github.com/${repositoryName}/blob/main/README.md`;
+            packageJson.bugs = { url: `https://github.com/${repositoryName}/issues` };
+            packageJson.repository = { type: 'git', url: `git+https://github.com/${repositoryName}.git` };
+            packageJson.license = license.identifier;
+            packageJson.author = author;
+
+            packageJson.devDependencies = await getPackageVersions(packageJson.devDependencies || {});
+            packageJson.packageManager = `pnpm@${await getPackageVersion('pnpm')}`;
+
+            return `${JSON.stringify(packageJson, null, 2)}\n`;
+          });
+        }
+
+        return 'package.json file created.';
+      },
+    },
+  ]);
 
   outro(pc.bgGreen(` ${pc.black('Project created successfully.')} `));
 };
