@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 
 import { cancel, intro, log, outro, tasks } from '@clack/prompts';
+import { execa } from 'execa';
 import pc from 'picocolors';
 
 import { clearDirectory } from '../helpers/clear-directory';
@@ -162,6 +163,13 @@ export const createProject = async () => {
         }
 
         return 'package.json file created.';
+      },
+    },
+    {
+      title: 'Installing dependencies.',
+      task: async () => {
+        await execa('pnpm', ['install'], { cwd: projectDirectory });
+        return 'Installed dependencies.';
       },
     },
   ]);
