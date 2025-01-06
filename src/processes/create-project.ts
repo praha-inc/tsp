@@ -82,17 +82,21 @@ export const createProject = async () => {
 
   log.info(`Creating a new package in ${pc.green(projectDirectory)}.`);
 
+  const copyLicense = async (directory: string): Promise<void> => {
+    await copyFile(getTemplatePath(license.templatePath), `${directory}/LICENSE`, (content) => {
+      return content.replace(`{authorName}`, author);
+    });
+  };
+
   await tasks([{
     title: 'Creating project files.',
     task: async () => {
       await copyDirectory(getTemplatePath('projects/base'), projectDirectory);
-      await copyFile(getTemplatePath(license.templatePath), `${projectDirectory}/LICENSE`, (content) => {
-        return content.replace(`{authorName}`, author);
-      });
+      await copyLicense(projectDirectory);
 
-      // eslint-disable-next-line unicorn/prefer-ternary
       if (requireMultiPackage) {
         await copyDirectory(getTemplatePath('projects/workspace-root'), projectDirectory);
+        await copyLicense(`${projectDirectory}/packages/${packageName.split('/').at(-1)}`);
       } else {
         await copyDirectory(getTemplatePath('projects/single-package'), projectDirectory);
       }
