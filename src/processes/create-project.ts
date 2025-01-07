@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 
+import writeChangeset from '@changesets/write';
 import { cancel, intro, log, outro, tasks } from '@clack/prompts';
 import { execa } from 'execa';
 import pc from 'picocolors';
@@ -12,6 +13,7 @@ import { getGitRepositoryName } from '../helpers/get-git-repository-name';
 import { getPackageVersion } from '../helpers/get-package-version';
 import { getPackageVersions } from '../helpers/get-package-versions';
 import { getTemplatePath } from '../helpers/get-template-path';
+import { initializeChangeset } from '../helpers/initialize-changeset';
 import { isEmptyDirectory } from '../helpers/is-empty-directory';
 import { isWriteable } from '../helpers/is-writeable';
 import { askAuthor } from '../prompts/ask-author';
@@ -173,6 +175,17 @@ export const createProject = async () => {
       task: async () => {
         await execa('pnpm', ['install'], { cwd: projectDirectory });
         return 'Installed dependencies.';
+      },
+    },
+    {
+      title: 'Initializing changeset.',
+      task: async () => {
+        await initializeChangeset(projectDirectory, repositoryName);
+        await writeChangeset({
+          summary: 'First release',
+          releases: [{ type: 'major', name: packageName }],
+        }, projectDirectory);
+        return 'Initialized changeset.';
       },
     },
     {

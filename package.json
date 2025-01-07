@@ -35,6 +35,9 @@
     "version:prepublish": "pkg-pr-new publish --pnpm --compact"
   },
   "dependencies": {
+    "@changesets/cli": "^2.27.11",
+    "@changesets/config": "^3.0.5",
+    "@changesets/write": "^0.3.2",
     "@clack/prompts": "^0.9.0",
     "execa": "^9.5.2",
     "find-up": "^7.0.0",
@@ -44,7 +47,6 @@
   },
   "devDependencies": {
     "@changesets/changelog-github": "0.5.0",
-    "@changesets/cli": "2.27.11",
     "@praha/eslint-config-common": "4.0.1",
     "@praha/eslint-config-definer": "2.0.1",
     "@praha/eslint-config-javascript": "3.0.1",

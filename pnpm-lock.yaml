@@ -8,6 +8,15 @@ importers:
 
   .:
     dependencies:
+      '@changesets/cli':
+        specifier: ^2.27.11
+        version: 2.27.11
+      '@changesets/config':
+        specifier: ^3.0.5
+        version: 3.0.5
+      '@changesets/write':
+        specifier: ^0.3.2
+        version: 0.3.2
       '@clack/prompts':
         specifier: ^0.9.0
         version: 0.9.0
@@ -30,9 +39,6 @@ importers:
       '@changesets/changelog-github':
         specifier: 0.5.0
         version: 0.5.0
-      '@changesets/cli':
-        specifier: 2.27.11
-        version: 2.27.11
       '@praha/eslint-config-common':
         specifier: 4.0.1
         version: 4.0.1(eslint@9.17.0)
