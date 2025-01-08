@@ -10,6 +10,7 @@ import { copyDirectory } from '../helpers/copy-directory';
 import { copyFile } from '../helpers/copy-file';
 import { findMissingCommands } from '../helpers/find-missing-commands';
 import { getGitRepositoryName } from '../helpers/get-git-repository-name';
+import { getLatestGitTag } from '../helpers/get-latest-git-tag';
 import { getPackageVersion } from '../helpers/get-package-version';
 import { getPackageVersions } from '../helpers/get-package-versions';
 import { getTemplatePath } from '../helpers/get-template-path';
@@ -168,6 +169,24 @@ export const createProject = async () => {
         }
 
         return 'The package.json file was created.';
+      },
+    },
+    {
+      title: 'Creating GitHub Actions workflow files.',
+      task: async () => {
+        await copyDirectory(getTemplatePath('github'), `${projectDirectory}/.github`, async (content) => {
+          let newContent = content;
+
+          const matches = content.matchAll(/uses: (.*)@/g);
+          await Promise.all([...matches].map(async (match) => {
+            const tag = await getLatestGitTag(match[1]!);
+            newContent = newContent.replace(`${match[1]!}@`, `${match[1]}@${tag.hash} # ${tag.name}`);
+          }));
+
+          return newContent;
+        });
+
+        return 'The GitHub Actions workflow files were created.';
       },
     },
     {
