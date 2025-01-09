@@ -35,13 +35,16 @@
   ],
   "scripts": {
     "build": "rslib build",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
     "lint:code": "eslint .",
     "lint:type": "tsc --noEmit"
   },
   "devDependencies": {
     "@rslib/core": "",
     "eslint": "",
-    "typescript": ""
+    "typescript": "",
+    "vitest": ""
   },
   "publishConfig": {
     "provenance": true

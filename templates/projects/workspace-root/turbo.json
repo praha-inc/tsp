@@ -9,6 +9,11 @@
         "dist/**"
       ]
     },
+    "test": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
     "lint:code": {
       "dependsOn": [
         "^build"

@@ -34,6 +34,8 @@
   ],
   "scripts": {
     "build": "rslib build",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
     "lint:code": "eslint .",
     "lint:type": "tsc --noEmit",
     "version": "changeset",
@@ -53,7 +55,8 @@
     "@tsconfig/strictest": "",
     "eslint": "",
     "pkg-pr-new": "",
-    "typescript": ""
+    "typescript": "",
+    "vitest": ""
   },
   "packageManager": "",
   "publishConfig": {

@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "build": "turbo build",
+    "test": "turbo test",
     "lint:code": "turbo lint:code",
     "lint:type": "turbo lint:type",
     "version": "changeset",
@@ -21,7 +22,8 @@
     "@tsconfig/strictest": "",
     "eslint": "",
     "pkg-pr-new": "",
-    "turbo": ""
+    "turbo": "",
+    "vitest": ""
   },
   "packageManager": ""
 }
