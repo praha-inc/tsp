@@ -10,7 +10,7 @@
 Create a new TypeScript package with the following command.
 
 ```shell
-npm create @prha/tsp
+npm create @praha/tsp@latest
 ```
 
 ## 🤝 Contributing
