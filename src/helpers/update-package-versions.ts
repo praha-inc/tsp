@@ -2,7 +2,7 @@ import { getPackageVersion } from './get-package-version';
 
 import type { PackageJson } from 'type-fest';
 
-export const getPackageVersions = async (dependencies: PackageJson.Dependency): Promise<PackageJson.Dependency> => {
+export const updatePackageVersions = async (dependencies: PackageJson.Dependency): Promise<PackageJson.Dependency> => {
   return await Promise.all(
     Object.keys(dependencies).map(async (packageName) => {
       return { [packageName]: await getPackageVersion(packageName) };

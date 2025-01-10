@@ -12,11 +12,11 @@ import { findMissingCommands } from '../helpers/find-missing-commands';
 import { getGitRepositoryName } from '../helpers/get-git-repository-name';
 import { getLatestGitTag } from '../helpers/get-latest-git-tag';
 import { getPackageVersion } from '../helpers/get-package-version';
-import { getPackageVersions } from '../helpers/get-package-versions';
 import { getTemplatePath } from '../helpers/get-template-path';
 import { initializeChangeset } from '../helpers/initialize-changeset';
 import { isEmptyDirectory } from '../helpers/is-empty-directory';
 import { isWriteable } from '../helpers/is-writeable';
+import { updatePackageVersions } from '../helpers/update-package-versions';
 import { askAuthor } from '../prompts/ask-author';
 import { askClearDirectory } from '../prompts/ask-clear-directory';
 import { askLicense } from '../prompts/ask-license';
@@ -126,7 +126,7 @@ export const createProject = async () => {
             const packageJson = JSON.parse(content) as PackageJson;
 
             packageJson.name = repositoryName.split('/').at(-1)!;
-            packageJson.devDependencies = await getPackageVersions(packageJson.devDependencies || {});
+            packageJson.devDependencies = await updatePackageVersions(packageJson.devDependencies || {});
             packageJson.packageManager = `pnpm@${await getPackageVersion('pnpm')}`;
 
             return `${JSON.stringify(packageJson, null, 2)}\n`;
@@ -144,7 +144,7 @@ export const createProject = async () => {
             packageJson.license = license.identifier;
             packageJson.author = author;
 
-            packageJson.devDependencies = await getPackageVersions(packageJson.devDependencies || {});
+            packageJson.devDependencies = await updatePackageVersions(packageJson.devDependencies || {});
 
             return `${JSON.stringify(packageJson, null, 2)}\n`;
           });
@@ -161,7 +161,7 @@ export const createProject = async () => {
             packageJson.license = license.identifier;
             packageJson.author = author;
 
-            packageJson.devDependencies = await getPackageVersions(packageJson.devDependencies || {});
+            packageJson.devDependencies = await updatePackageVersions(packageJson.devDependencies || {});
             packageJson.packageManager = `pnpm@${await getPackageVersion('pnpm')}`;
 
             return `${JSON.stringify(packageJson, null, 2)}\n`;

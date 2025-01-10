@@ -13,7 +13,7 @@ export const getLatestGitTag = async (repository: string): Promise<GitTag> => {
   const [hash, tag] = latestTag.split('\t');
 
   return {
-    name: tag!.replace('refs/tags/', ''),
-    hash: hash!,
+    name: tag!.replace('refs/tags/', '').trim(),
+    hash: hash!.trim(),
   };
 };
