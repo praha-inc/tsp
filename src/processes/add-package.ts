@@ -1,3 +1,3 @@
-export const addPackage = (packageJsonPath: string) => {
-  console.log('addPackage', packageJsonPath);
+export const addPackage = () => {
+  console.log('addPackage');
 };
