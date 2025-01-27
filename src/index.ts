@@ -6,7 +6,7 @@ import { createProject } from './processes/create-project';
 
 const main = async () => {
   if (fs.existsSync('pnpm-workspace.yaml')) {
-    return addPackage();
+    return await addPackage();
   }
 
   await createProject();
