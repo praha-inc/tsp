@@ -54,7 +54,7 @@
     "@praha/eslint-config-javascript": "3.0.1",
     "@praha/eslint-config-style": "3.0.2",
     "@praha/eslint-config-typescript": "3.0.2",
-    "@rslib/core": "0.3.2",
+    "@rslib/core": "0.4.0",
     "@tsconfig/strictest": "2.0.5",
     "@types/node": "22.10.10",
     "@types/validate-npm-package-name": "4.0.2",
