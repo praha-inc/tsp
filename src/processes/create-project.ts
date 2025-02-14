@@ -183,10 +183,10 @@ export const createProject = async () => {
         await copyDirectory(getTemplatePath('github'), `${projectDirectory}/.github`, async (content) => {
           let newContent = content;
 
-          const matches = content.matchAll(/uses: (.*)@/g);
+          const matches = new Set([...content.matchAll(/uses: (.*)@/g)].map((match) => match[1]!));
           await Promise.all([...matches].map(async (match) => {
-            const tag = await getLatestGitTag(match[1]!);
-            newContent = newContent.replace(`${match[1]!}@`, `${match[1]}@${tag.hash} # ${tag.name}`);
+            const tag = await getLatestGitTag(match);
+            newContent = newContent.replaceAll(`${match}@`, `${match}@${tag.hash} # ${tag.name}`);
           }));
 
           return newContent;
