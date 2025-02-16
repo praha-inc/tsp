@@ -38,6 +38,16 @@ describe('copyFile', () => {
     expect(vol.readFileSync('./destination/file.txt', 'utf8')).toEqual('TEXT');
   });
 
+  it('should map a file name', async () => {
+    vol.fromJSON({
+      './source/_gitignore': 'text',
+    });
+
+    await copyFile('./source/_gitignore', './destination/.gitignore');
+
+    expect(vol.readFileSync('./destination/.gitignore', 'utf8')).toEqual('text');
+  });
+
   it('should throw an error if the source file does not exist', async () => {
     await expect(copyFile('./source/file.txt', './destination/file.txt')).rejects.toThrowError();
   });
