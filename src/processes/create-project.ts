@@ -101,10 +101,6 @@ export const createProject = async () => {
           });
         };
 
-        const copyGitIgnore = async (type: string, directory: string): Promise<void> => {
-          await copyFile(getTemplatePath(`gitignore/${type}/gitignore`), `${directory}/.gitignore`);
-        };
-
         await copyDirectory(getTemplatePath('projects/base'), projectDirectory);
         await copyLicense(projectDirectory);
 
@@ -112,12 +108,10 @@ export const createProject = async () => {
           await copyDirectory(getTemplatePath('projects/workspace-root'), projectDirectory);
           await copyDirectory(getTemplatePath('projects/workspace-package'), `${projectDirectory}/${packageDirectory}`);
           await copyLicense(`${projectDirectory}/${packageDirectory}`);
-          await copyGitIgnore('workspace-root', projectDirectory);
           await fs.promises.writeFile(`${projectDirectory}/README.md`, `# ${repositoryName.split('/').at(-1)}\n`);
           await fs.promises.writeFile(`${projectDirectory}/${packageDirectory}/README.md`, `# ${packageName}\n\n${description}\n`);
         } else {
           await copyDirectory(getTemplatePath('projects/single-package'), projectDirectory);
-          await copyGitIgnore('single-package', projectDirectory);
           await fs.promises.writeFile(`${projectDirectory}/README.md`, `# ${packageName}\n\n${description}\n`);
         }
 
