@@ -1,5 +1,15 @@
 # @praha/create-tsp
 
+## 1.0.2
+
+### Patch Changes
+
+- [#45](https://github.com/praha-inc/tsp/pull/45) [`97888a6`](https://github.com/praha-inc/tsp/commit/97888a6c4e30b9182c30965562ca7fbd6451e36f) Thanks [@Karibash](https://github.com/Karibash)! - Fix a bug that dotfiles were not generated correctly
+
+- [#40](https://github.com/praha-inc/tsp/pull/40) [`ff8c820`](https://github.com/praha-inc/tsp/commit/ff8c820ca49ee0f4d185ab7f430f7384a53f47a1) Thanks [@Karibash](https://github.com/Karibash)! - Fix version specification broken when duplicating action names in the same workflow
+
+- [#42](https://github.com/praha-inc/tsp/pull/42) [`af27dcf`](https://github.com/praha-inc/tsp/commit/af27dcfe39d9725dcd7258aa105a3a6435154396) Thanks [@Karibash](https://github.com/Karibash)! - Fix latest git tag retrieval to handle tags with references correctly
+
 ## 1.0.1
 
 ### Patch Changes
