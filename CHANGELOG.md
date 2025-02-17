@@ -1,5 +1,11 @@
 # @praha/create-tsp
 
+## 1.0.3
+
+### Patch Changes
+
+- [#47](https://github.com/praha-inc/tsp/pull/47) [`4264b78`](https://github.com/praha-inc/tsp/commit/4264b7839a2b01bda3874924f0a4c1260117af3e) Thanks [@Karibash](https://github.com/Karibash)! - Make the test file be excluded at build time
+
 ## 1.0.2
 
 ### Patch Changes
