@@ -37,8 +37,8 @@ importers:
         specifier: 0.5.1
         version: 0.5.1
       '@changesets/types':
-        specifier: 6.0.0
-        version: 6.0.0
+        specifier: 6.1.0
+        version: 6.1.0
       '@praha/eslint-config-common':
         specifier: 4.0.1
         version: 4.0.1(eslint@9.20.1)
@@ -156,9 +156,6 @@ packages:
 
   '@changesets/types@4.1.0':
     resolution: {integrity: sha512-LDQvVDv5Kb50ny2s25Fhm3d9QSZimsoUGBsUioj6MC3qbMUCuC8GPIvk/M6IvXx3lYhAs0lwWUQLb+VIEUCECw==}
-
-  '@changesets/types@6.0.0':
-    resolution: {integrity: sha512-b1UkfNulgKoWfqyHtzKS5fOZYSJO+77adgL7DLRDr+/7jhChN+QcHnbjiQVOz/U+Ts3PGNySq7diAItzDgugfQ==}
 
   '@changesets/types@6.1.0':
     resolution: {integrity: sha512-rKQcJ+o1nKNgeoYRHKOS07tAMNd3YSN0uHaJOZYjBAgxfV7TUE7JE+z4BzZdQwb5hKaYbayKN5KrYV7ODb2rAA==}
@@ -2229,13 +2226,11 @@ snapshots:
 
   '@changesets/types@4.1.0': {}
 
-  '@changesets/types@6.0.0': {}
-
   '@changesets/types@6.1.0': {}
 
   '@changesets/write@0.3.2':
     dependencies:
-      '@changesets/types': 6.0.0
+      '@changesets/types': 6.1.0
       fs-extra: 7.0.1
       human-id: 1.0.2
       prettier: 2.8.8
