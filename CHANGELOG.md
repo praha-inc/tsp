@@ -1,5 +1,11 @@
 # @praha/create-tsp
 
+## 1.0.4
+
+### Patch Changes
+
+- [#60](https://github.com/praha-inc/tsp/pull/60) [`931f566`](https://github.com/praha-inc/tsp/commit/931f566bd3f5912ad536ae26f40157323f7baf25) Thanks [@Karibash](https://github.com/Karibash)! - Remove outDir option from tsconfig.json files
+
 ## 1.0.3
 
 ### Patch Changes
