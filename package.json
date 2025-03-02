@@ -16,7 +16,7 @@
     "url": "git+https://github.com/praha-inc/tsp.git"
   },
   "license": "MIT",
-  "author": "PrAha Inc.",
+  "author": "PrAha, Inc.",
   "type": "module",
   "bin": "dist/index.js",
   "files": [
