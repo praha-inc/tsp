@@ -87,6 +87,6 @@ Feel free to check [issues page](https://github.com/praha-inc/tsp/issues) if you
 
 ## 📝 License
 
-Copyright © [PrAha](https://www.praha-inc.com/).
+Copyright © [PrAha, Inc.](https://www.praha-inc.com/)
 
 This project is [```MIT```](https://github.com/praha-inc/tsp/blob/main/LICENSE) licensed.
