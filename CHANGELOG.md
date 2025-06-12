@@ -1,5 +1,11 @@
 # @praha/create-tsp
 
+## 1.0.5
+
+### Patch Changes
+
+- [#175](https://github.com/praha-inc/tsp/pull/175) [`4680d09`](https://github.com/praha-inc/tsp/commit/4680d0905c86ee891e63d769547e13a85ad7fd10) Thanks [@Karibash](https://github.com/Karibash)! - Make it explicitly stated that there are no side effects
+
 ## 1.0.4
 
 ### Patch Changes
