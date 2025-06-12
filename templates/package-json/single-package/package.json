@@ -13,6 +13,7 @@
   },
   "license": "",
   "author": "",
+  "sideEffects": false,
   "type": "module",
   "exports": {
     "require": {
