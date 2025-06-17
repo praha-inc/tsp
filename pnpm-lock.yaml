@@ -61,8 +61,8 @@ importers:
         specifier: 2.0.5
         version: 2.0.5
       '@types/node':
-        specifier: 22.15.31
-        version: 22.15.31
+        specifier: 22.15.32
+        version: 22.15.32
       '@types/validate-npm-package-name':
         specifier: 4.0.2
         version: 4.0.2
@@ -86,7 +86,7 @@ importers:
         version: 5.7.3
       vitest:
         specifier: 3.2.3
-        version: 3.2.3(@types/node@22.15.31)
+        version: 3.2.3(@types/node@22.15.32)
 
 packages:
 
@@ -821,8 +821,8 @@ packages:
   '@types/node@12.20.55':
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
 
-  '@types/node@22.15.31':
-    resolution: {integrity: sha512-jnVe5ULKl6tijxUhvQeNbQG/84fHfg+yMak02cT8QVhBx/F05rAVxCGBYYTh2EKz22D6JF5ktXuNwdx7b9iEGw==}
+  '@types/node@22.15.32':
+    resolution: {integrity: sha512-3jigKqgSjsH6gYZv2nEsqdXfZqIFGAV36XYYjf9KGZ3PSG+IhLecqPnI310RvjutyMwifE2hhhNEklOUrvx/wA==}
 
   '@types/validate-npm-package-name@4.0.2':
     resolution: {integrity: sha512-lrpDziQipxCEeK5kWxvljWYhUvOiB2A9izZd9B2AFarYAkqZshb4lPbRs7zKEic6eGtH8V/2qJW+dPp9OtF6bw==}
@@ -3001,7 +3001,7 @@ snapshots:
 
   '@types/node@12.20.55': {}
 
-  '@types/node@22.15.31':
+  '@types/node@22.15.32':
     dependencies:
       undici-types: 6.21.0
 
@@ -3181,13 +3181,13 @@ snapshots:
       chai: 5.2.0
       tinyrainbow: 2.0.0
 
-  '@vitest/mocker@3.2.3(vite@5.4.11(@types/node@22.15.31))':
+  '@vitest/mocker@3.2.3(vite@5.4.11(@types/node@22.15.32))':
     dependencies:
       '@vitest/spy': 3.2.3
       estree-walker: 3.0.3
       magic-string: 0.30.17
     optionalDependencies:
-      vite: 5.4.11(@types/node@22.15.31)
+      vite: 5.4.11(@types/node@22.15.32)
 
   '@vitest/pretty-format@3.2.3':
     dependencies:
@@ -4296,13 +4296,13 @@ snapshots:
 
   validate-npm-package-name@6.0.1: {}
 
-  vite-node@3.2.3(@types/node@22.15.31):
+  vite-node@3.2.3(@types/node@22.15.32):
     dependencies:
       cac: 6.7.14
       debug: 4.4.1
       es-module-lexer: 1.7.0
       pathe: 2.0.3
-      vite: 5.4.11(@types/node@22.15.31)
+      vite: 5.4.11(@types/node@22.15.32)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -4314,20 +4314,20 @@ snapshots:
       - supports-color
       - terser
 
-  vite@5.4.11(@types/node@22.15.31):
+  vite@5.4.11(@types/node@22.15.32):
     dependencies:
       esbuild: 0.21.5
       postcss: 8.4.49
       rollup: 4.30.1
     optionalDependencies:
-      '@types/node': 22.15.31
+      '@types/node': 22.15.32
       fsevents: 2.3.3
 
-  vitest@3.2.3(@types/node@22.15.31):
+  vitest@3.2.3(@types/node@22.15.32):
     dependencies:
       '@types/chai': 5.2.2
       '@vitest/expect': 3.2.3
-      '@vitest/mocker': 3.2.3(vite@5.4.11(@types/node@22.15.31))
+      '@vitest/mocker': 3.2.3(vite@5.4.11(@types/node@22.15.32))
       '@vitest/pretty-format': 3.2.3
       '@vitest/runner': 3.2.3
       '@vitest/snapshot': 3.2.3
@@ -4345,11 +4345,11 @@ snapshots:
       tinyglobby: 0.2.14
       tinypool: 1.1.0
       tinyrainbow: 2.0.0
-      vite: 5.4.11(@types/node@22.15.31)
-      vite-node: 3.2.3(@types/node@22.15.31)
+      vite: 5.4.11(@types/node@22.15.32)
+      vite-node: 3.2.3(@types/node@22.15.32)
       why-is-node-running: 2.3.0
     optionalDependencies:
-      '@types/node': 22.15.31
+      '@types/node': 22.15.32
     transitivePeerDependencies:
       - less
       - lightningcss
