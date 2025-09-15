@@ -62,7 +62,7 @@
     "@types/which": "3.0.4",
     "eslint": "9.35.0",
     "memfs": "4.39.0",
-    "pkg-pr-new": "0.0.59",
+    "pkg-pr-new": "0.0.60",
     "type-fest": "4.41.0",
     "typescript": "5.7.3",
     "vitest": "3.2.4"
