@@ -1,5 +1,11 @@
 # @praha/create-tsp
 
+## 1.0.6
+
+### Patch Changes
+
+- [#242](https://github.com/praha-inc/tsp/pull/242) [`47f4eba`](https://github.com/praha-inc/tsp/commit/47f4ebacff6eba7423cd262e8be8ec303507e8d3) Thanks [@Karibash](https://github.com/Karibash)! - Add file extensions to import paths in TypeScript declaration files
+
 ## 1.0.5
 
 ### Patch Changes
