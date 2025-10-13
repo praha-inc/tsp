@@ -57,7 +57,7 @@
     "@praha/eslint-config-typescript": "3.0.9",
     "@rslib/core": "0.15.0",
     "@tsconfig/strictest": "2.0.6",
-    "@types/node": "22.18.9",
+    "@types/node": "22.18.10",
     "@types/validate-npm-package-name": "4.0.2",
     "@types/which": "3.0.4",
     "eslint": "9.37.0",
