@@ -79,8 +79,8 @@ importers:
         specifier: 0.0.62
         version: 0.0.62
       type-fest:
-        specifier: 5.3.1
-        version: 5.3.1
+        specifier: 5.4.0
+        version: 5.4.0
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -2094,8 +2094,8 @@ packages:
     resolution: {integrity: sha512-Acylog8/luQ8L7il+geoSxhEkazvkslg7PSNKOX59mbB9cOveP5aq9h74Y7YU8yDpJwetzQQrfIwtf4Wp4LKcw==}
     engines: {node: '>=4'}
 
-  type-fest@5.3.1:
-    resolution: {integrity: sha512-VCn+LMHbd4t6sF3wfU/+HKT63C9OoyrSIf4b+vtWHpt2U7/4InZG467YDNMFMR70DdHjAdpPWmw2lzRdg0Xqqg==}
+  type-fest@5.4.0:
+    resolution: {integrity: sha512-wfkA6r0tBpVfGiyO+zbf9e10QkRQSlK9F2UvyfnjoCmrvH2bjHyhPzhugSBOuq1dog3P0+FKckqe+Xf6WKVjwg==}
     engines: {node: '>=20'}
 
   typescript-eslint@8.44.0:
@@ -4244,7 +4244,7 @@ snapshots:
 
   type-detect@4.1.0: {}
 
-  type-fest@5.3.1:
+  type-fest@5.4.0:
     dependencies:
       tagged-tag: 1.0.0
 
