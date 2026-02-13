@@ -45,7 +45,7 @@
     "execa": "^9.5.2",
     "picocolors": "^1.1.1",
     "validate-npm-package-name": "^6.0.0",
-    "which": "^5.0.0"
+    "which": "^6.0.0"
   },
   "devDependencies": {
     "@changesets/changelog-github": "0.5.2",
