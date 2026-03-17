@@ -7,8 +7,8 @@ export const askProjectDirectory = async (packageName: string): Promise<string> 
     message: 'Where would you like to create the project?',
     placeholder: './my-package',
     initialValue: `./${packageName.split('/').at(-1)}`,
-    validate: (value: string) => {
-      if (value.length <= 0) return 'Directory name should not be empty';
+    validate: (value) => {
+      if (!value || value.length <= 0) return 'Directory name should not be empty';
       if (255 < value.length) return 'Directory name should be less than 256 characters';
       return;
     },

@@ -6,8 +6,8 @@ export const askPackageDescription = async (): Promise<string> => {
   const result = await text({
     message: 'Package description',
     placeholder: 'My awesome package',
-    validate: (value: string) => {
-      if (value.length <= 0) return 'Description should not be empty';
+    validate: (value) => {
+      if (!value || value.length <= 0) return 'Description should not be empty';
       return;
     },
   });

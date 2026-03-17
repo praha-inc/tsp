@@ -9,8 +9,8 @@ export const askPackageDirectory = async (packageName: string): Promise<string> 
     message: 'Where would you like to create a package?',
     placeholder: './packages/my-package',
     initialValue: `./packages/${packageName.split('/').at(-1)}`,
-    validate: (value: string) => {
-      if (value.length <= 0) return 'Directory name should not be empty';
+    validate: (value) => {
+      if (!value || value.length <= 0) return 'Directory name should not be empty';
       if (255 < value.length) return 'Directory name should be less than 256 characters';
       if (!path.resolve(value).startsWith(path.resolve('.'))) {
         return 'Directory name should not be outside of the current directory';
