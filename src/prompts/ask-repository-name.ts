@@ -6,8 +6,8 @@ export const askRepositoryName = async (): Promise<string> => {
   const result = await text({
     message: 'Repository name',
     placeholder: 'user/repository',
-    validate: (value: string) => {
-      if (!/^[\w-]+\/[\w-]+$/.test(value)) {
+    validate: (value) => {
+      if (!/^[\w-]+\/[\w-]+$/.test(value ?? '')) {
         return 'Please enter a valid repository name';
       }
       return;

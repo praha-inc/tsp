@@ -7,8 +7,8 @@ export const askPackageKeywords = async (): Promise<string[]> => {
     message: 'Package search keywords (comma separated)',
     placeholder: 'javascript, typescript',
     initialValue: 'javascript, typescript',
-    validate: (value: string) => {
-      if (value.length <= 0) return 'Keywords should not be empty';
+    validate: (value) => {
+      if (!value || value.length <= 0) return 'Keywords should not be empty';
       return;
     },
   });

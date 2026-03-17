@@ -7,8 +7,8 @@ export const askPackageName = async (): Promise<string> => {
   const result = await text({
     message: 'Package name',
     placeholder: 'my-package',
-    validate: (value: string) => {
-      const result = validateNpmPackageName(value);
+    validate: (value) => {
+      const result = validateNpmPackageName(value ?? '');
       if (result.validForNewPackages) return;
 
       const messages = [
