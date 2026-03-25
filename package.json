@@ -61,7 +61,7 @@
     "@types/validate-npm-package-name": "4.0.2",
     "@types/which": "3.0.4",
     "eslint": "9.39.4",
-    "memfs": "4.56.11",
+    "memfs": "4.57.1",
     "pkg-pr-new": "0.0.66",
     "type-fest": "5.5.0",
     "typescript": "5.9.3",
