@@ -65,7 +65,7 @@
     "pkg-pr-new": "0.0.66",
     "type-fest": "5.5.0",
     "typescript": "5.9.3",
-    "vitest": "4.1.0"
+    "vitest": "4.1.1"
   },
   "packageManager": "pnpm@10.32.1",
   "publishConfig": {
