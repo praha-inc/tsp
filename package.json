@@ -60,7 +60,7 @@
     "@types/node": "24.12.2",
     "@types/validate-npm-package-name": "4.0.2",
     "@types/which": "3.0.4",
-    "eslint": "9.39.4",
+    "eslint": "10.2.0",
     "memfs": "4.57.1",
     "pkg-pr-new": "0.0.66",
     "type-fest": "5.5.0",
