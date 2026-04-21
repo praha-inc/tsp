@@ -63,7 +63,7 @@
     "eslint": "9.39.4",
     "memfs": "4.57.2",
     "pkg-pr-new": "0.0.66",
-    "type-fest": "5.5.0",
+    "type-fest": "5.6.0",
     "typescript": "5.9.3",
     "vitest": "4.1.4"
   },
