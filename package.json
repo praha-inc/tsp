@@ -64,7 +64,7 @@
     "memfs": "4.57.2",
     "pkg-pr-new": "0.0.67",
     "type-fest": "5.6.0",
-    "typescript": "5.9.3",
+    "typescript": "6.0.3",
     "vitest": "4.1.5"
   },
   "packageManager": "pnpm@10.33.2",
