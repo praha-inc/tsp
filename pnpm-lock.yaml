@@ -76,8 +76,8 @@ importers:
         specifier: 4.57.2
         version: 4.57.2(tslib@2.8.1)
       pkg-pr-new:
-        specifier: 0.0.69
-        version: 0.0.69
+        specifier: 0.0.70
+        version: 0.0.70
       type-fest:
         specifier: 5.6.0
         version: 5.6.0
@@ -1826,8 +1826,8 @@ packages:
     resolution: {integrity: sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==}
     engines: {node: '>=6'}
 
-  pkg-pr-new@0.0.69:
-    resolution: {integrity: sha512-a+6/cvpMvFQZpYjjd8ECLOBu2wU3zVclqzehraxfpbS72lyo9hIHu0ap5pN4rx+4jRDlS+W6K7cunXNWqIL5FQ==}
+  pkg-pr-new@0.0.70:
+    resolution: {integrity: sha512-tKx5G3wD1b6evBR6Gue6pmeXghQco1vIHr2et0NDWnGITP0FnDlhqZBn0cHTj/Ui/mA6RdQL+iOXLmI1MA7mFw==}
     hasBin: true
 
   pkg-types@2.3.1:
@@ -4008,7 +4008,7 @@ snapshots:
 
   pify@4.0.1: {}
 
-  pkg-pr-new@0.0.69:
+  pkg-pr-new@0.0.70:
     dependencies:
       '@actions/core': 3.0.1
       '@jsdevtools/ez-spawn': 3.0.4
