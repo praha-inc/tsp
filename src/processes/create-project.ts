@@ -11,6 +11,7 @@ import { copyFile } from '../helpers/copy-file';
 import { findMissingCommands } from '../helpers/find-missing-commands';
 import { getGitRepositoryName } from '../helpers/get-git-repository-name';
 import { getLatestGitTag } from '../helpers/get-latest-git-tag';
+import { getNodejsLtsVersion } from '../helpers/get-nodejs-lts-version';
 import { getPackageVersion } from '../helpers/get-package-version';
 import { getTemplatePath } from '../helpers/get-template-path';
 import { initializeChangeset } from '../helpers/initialize-changeset';
@@ -116,6 +117,13 @@ export const createProject = async () => {
         }
 
         return 'The project files were created.';
+      },
+    },
+    {
+      title: 'Creating .tool-versions file.',
+      task: async () => {
+        const nodejsLtsVersion = await getNodejsLtsVersion();
+        await fs.promises.writeFile(`${projectDirectory}/.tool-versions`, `nodejs ${nodejsLtsVersion}\n`);
       },
     },
     {

@@ -7,19 +7,11 @@ runs:
     - name: Setup pnpm
       uses: pnpm/action-setup@
 
-    - name: Expose pnpm store path
-      id: pnpm_store_path
-      shell: bash
-      run: |
-        echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-
-    - name: Setup pnpm cache
-      uses: actions/cache@
+    - name: Setup Node.js
+      uses: actions/setup-node@
       with:
-        path: ${{ steps.pnpm_store_path.outputs.STORE_PATH }}
-        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-        restore-keys: |
-          ${{ runner.os }}-pnpm-store-
+        node-version-file: .tool-versions
+        cache: 'pnpm'
 
     - name: Install dependencies
       shell: bash
