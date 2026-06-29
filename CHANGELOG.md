@@ -1,5 +1,21 @@
 # @praha/create-tsp
 
+## 1.1.0
+
+### Minor Changes
+
+- [#464](https://github.com/praha-inc/tsp/pull/464) [`4dba1d7`](https://github.com/praha-inc/tsp/commit/4dba1d784db57fc981ea0af0392acb7a5cd569fb) Thanks [@Karibash](https://github.com/Karibash)! - Add .tool-versions file creation with latest Node.js LTS version
+
+- [#462](https://github.com/praha-inc/tsp/pull/462) [`d575ef5`](https://github.com/praha-inc/tsp/commit/d575ef5a7007d4ba4d616ac990b2525a8e8a9605) Thanks [@Karibash](https://github.com/Karibash)! - Migrate linter from eslint to oxlint
+
+### Patch Changes
+
+- [#464](https://github.com/praha-inc/tsp/pull/464) [`ec320e1`](https://github.com/praha-inc/tsp/commit/ec320e15a2dbd148dca2a21f0e45e144e0ebabdd) Thanks [@Karibash](https://github.com/Karibash)! - Remove redundant pnpm store cache step
+
+- [#465](https://github.com/praha-inc/tsp/pull/465) [`3130766`](https://github.com/praha-inc/tsp/commit/3130766399c688a8059648419fae2c0725078107) Thanks [@Karibash](https://github.com/Karibash)! - Enable dts autoExtension and update CJS types to .d.cts
+
+- [#464](https://github.com/praha-inc/tsp/pull/464) [`d589011`](https://github.com/praha-inc/tsp/commit/d589011a7aaac2b60b5cca397a93e0ccd8acf32f) Thanks [@Karibash](https://github.com/Karibash)! - Remove NPM_TOKEN from publish workflow
+
 ## 1.0.6
 
 ### Patch Changes
