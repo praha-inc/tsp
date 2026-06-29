@@ -14,13 +14,10 @@
   "devDependencies": {
     "@changesets/changelog-github": "",
     "@changesets/cli": "",
-    "@praha/eslint-config-common": "",
-    "@praha/eslint-config-definer": "",
-    "@praha/eslint-config-javascript": "",
-    "@praha/eslint-config-style": "",
-    "@praha/eslint-config-typescript": "",
+    "@praha/oxlint-config-standard": "",
     "@tsconfig/strictest": "",
-    "eslint": "",
+    "oxlint": "",
+    "oxlint-tsgolint": "",
     "pkg-pr-new": "",
     "turbo": "",
     "vitest": ""
