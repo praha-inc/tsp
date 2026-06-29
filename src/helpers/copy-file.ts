@@ -4,6 +4,7 @@ import path from 'node:path';
 const map: Record<string, string> = {
   _gitignore: '.gitignore',
   _npmrc: '.npmrc',
+  [`_oxlint.config.ts`]: 'oxlint.config.ts',
 };
 
 const mapDirectory = (directory: string): string => {

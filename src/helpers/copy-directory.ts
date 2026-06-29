@@ -15,7 +15,7 @@ export const copyDirectory = async (
     const destinationFile = path.resolve(destination, file);
 
     const stat = await fs.stat(sourceFile);
-    // eslint-disable-next-line unicorn/prefer-ternary
+    // oxlint-disable-next-line unicorn/prefer-ternary
     if (stat.isDirectory()) {
       await copyDirectory(sourceFile, destinationFile, transform);
     } else {
