@@ -1,5 +1,11 @@
 # @praha/create-tsp
 
+## 1.1.1
+
+### Patch Changes
+
+- [#466](https://github.com/praha-inc/tsp/pull/466) [`0dbb9c7`](https://github.com/praha-inc/tsp/commit/0dbb9c7bb538474bc4279e054b0ba4eeed6409e4) Thanks [@Karibash](https://github.com/Karibash)! - Add rootDir compiler option to tsconfig.build.json templates
+
 ## 1.1.0
 
 ### Minor Changes
