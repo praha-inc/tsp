@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@changesets/cli": "^2.27.11",
-    "@changesets/config": "^3.0.5",
+    "@changesets/config": "^4.0.0",
     "@changesets/write": "^0.4.0",
     "@clack/prompts": "^1.0.0",
     "execa": "^9.5.2",
