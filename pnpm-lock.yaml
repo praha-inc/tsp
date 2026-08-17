@@ -37,8 +37,8 @@ importers:
         specifier: 0.7.0
         version: 0.7.0
       '@changesets/types':
-        specifier: 6.1.0
-        version: 6.1.0
+        specifier: 7.0.0
+        version: 7.0.0
       '@praha/oxlint-config-standard':
         specifier: 1.0.0-beta.7
         version: 1.0.0-beta.7(@praha/byethrow@0.12.0(typescript@6.0.3))(eslint@10.8.1)(oxlint-tsgolint@0.23.0)(oxlint@1.78.0(oxlint-tsgolint@0.23.0))
@@ -208,6 +208,10 @@ packages:
 
   '@changesets/types@6.1.0':
     resolution: {integrity: sha512-rKQcJ+o1nKNgeoYRHKOS07tAMNd3YSN0uHaJOZYjBAgxfV7TUE7JE+z4BzZdQwb5hKaYbayKN5KrYV7ODb2rAA==}
+
+  '@changesets/types@7.0.0':
+    resolution: {integrity: sha512-c5GoiQyt3pxiXjrWSNoP8/GRf4kG+VnKzovx1OQM8dYYALlSwgedmkPmJ+ZqGxqwg9D3Bkj85Uo4KLd5BN3A0w==}
+    engines: {node: ^22.11 || ^24 || >=26}
 
   '@changesets/write@0.4.0':
     resolution: {integrity: sha512-CdTLvIOPiCNuH71pyDu3rA+Q0n65cmAbXnwWH84rKGiFumFzkmHNT8KHTMEchcxN+Kl8I54xGUhJ7l3E7X396Q==}
@@ -2292,6 +2296,8 @@ snapshots:
   '@changesets/types@4.1.0': {}
 
   '@changesets/types@6.1.0': {}
+
+  '@changesets/types@7.0.0': {}
 
   '@changesets/write@0.4.0':
     dependencies:
