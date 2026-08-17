@@ -48,7 +48,7 @@
     "which": "^7.0.0"
   },
   "devDependencies": {
-    "@changesets/changelog-github": "0.7.0",
+    "@changesets/changelog-github": "1.0.0",
     "@changesets/types": "6.1.0",
     "@praha/oxlint-config-standard": "1.0.0-beta.7",
     "@rslib/core": "0.23.2",
