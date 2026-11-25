@@ -38,7 +38,7 @@
     "version:prepublish": "pkg-pr-new publish --pnpm --compact"
   },
   "dependencies": {
-    "@changesets/cli": "^2.27.11",
+    "@changesets/cli": "^3.0.0",
     "@changesets/config": "^3.0.5",
     "@changesets/write": "^0.4.0",
     "@clack/prompts": "^1.0.0",
